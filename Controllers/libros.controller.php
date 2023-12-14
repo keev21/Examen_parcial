@@ -47,6 +47,6 @@ switch ($_GET["op"]) {
         echo json_encode($datos); //devuelvo el arreglo en formato json
         break;
 
-    
+        
     
 }

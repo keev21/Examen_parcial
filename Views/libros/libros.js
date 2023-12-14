@@ -17,7 +17,7 @@ function init() {
         html += `<tr>
                   <td>${index + 1}</td>
                   <td>${valor.titulo}</td>
-                  <td>${valor.id_autor}</td>
+                  <td>${valor.nombre_autor}</td>
                   <td>${valor.genero}</td>
                   <td>${valor.fecha_publicacion}</td>
               <td>
