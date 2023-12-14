@@ -56,7 +56,7 @@ class autores_model{
         success: function (res) {
           res = JSON.parse(res);
           if (res === "ok") {
-            Swal.fire("autoress", "autores Registrado", "success");
+            Swal.fire("Autor", "Autor Registrado", "success");
             todos_controlador();
           } else {
             Swal.fire("Error", res, "error");
@@ -99,7 +99,7 @@ class autores_model{
           success: function (res) {
             res = JSON.parse(res);
             if (res === "ok") {
-              Swal.fire("autores", "autores Registrado", "success");
+              Swal.fire("Autor", "Autor Registrado", "success");
               todos_controlador();
             } else {
               Swal.fire("Error", res, "error");
@@ -154,7 +154,7 @@ class autores_model{
                       if (res.error) {
                           Swal.fire("Error", res.error, "error");
                       } else if (res === "ok") {
-                          Swal.fire("autoress", "Autores Eliminado", "success");
+                          Swal.fire("Autor", "Autor Eliminado", "success");
                           todos_controlador();
                       } else {
                           Swal.fire("Error", res, "error");

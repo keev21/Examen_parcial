@@ -55,7 +55,7 @@ function init() {
       success: function (res) {
         res = JSON.parse(res);
         if (res == "ok") {
-          Swal.fire("libros", "Registrado con éxito", "success");
+          Swal.fire("Libros", "Registrado con éxito", "success");
           todos();
           limpia_Cajas();
         } else {
@@ -149,7 +149,7 @@ function init() {
           (res) => {
             res = JSON.parse(res);
             if (res === "ok") {
-              Swal.fire("libros", "Libro Eliminado", "success");
+              Swal.fire("Libros", "Libro Eliminado", "success");
               todos();
               
             } else {
