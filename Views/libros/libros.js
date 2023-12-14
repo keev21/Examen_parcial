@@ -102,6 +102,7 @@ function init() {
     );
     $("#Modal_libros").modal("show");
     limpia_Cajas();
+    todos();
   };
   
   var eliminar = (id_libro) => {
@@ -121,16 +122,22 @@ function init() {
           (res) => {
             res = JSON.parse(res);
             if (res === "ok") {
-              Swal.fire("libros", "Provincia Eliminado", "success");
+              Swal.fire("libros", "Libro Eliminado", "success");
               todos();
+              
             } else {
               Swal.fire("Error", res, "error");
+              
             }
+            
+            
           }
+          
         );
+        
       }
     });
-  
+    
     limpia_Cajas();
   };
   

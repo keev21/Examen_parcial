@@ -157,11 +157,12 @@ class autores_model{
                       } else {
                           Swal.fire("Error", res, "error");
                       }
+                      todos_controlador();
                   }
               );
           }
       });
-  
+      
       this.limpia_Cajas();
   }
 
