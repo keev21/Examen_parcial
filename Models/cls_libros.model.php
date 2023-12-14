@@ -74,8 +74,21 @@ class Clase_libros
             $con->close();
         }
     }
-    
-    
+
+    public function titulo_autor_repetidos($titulo, $id_autor)
+{
+    try {
+        $con = new Clase_Conectar_Base_Datos();
+        $con = $con->ProcedimientoConectar();
+        $cadena = "SELECT count(*) as repetidos FROM `libros` WHERE titulo = '$titulo' AND id_autor = '$id_autor'";
+        $result = mysqli_query($con, $cadena);
+        return $result;
+    } catch (Throwable $th) {
+        return $th->getMessage();
+    } finally {
+        $con->close();
+    }
+}
    
    
 }

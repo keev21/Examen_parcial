@@ -105,6 +105,31 @@ function init() {
     todos();
   };
   
+  function titulo_repetido() {
+    var titulo = $("#titulo").val();
+    var id_autor = $("#id_autor").val();
+
+    $.post(
+        "../../Controllers/libros.controller.php?op=titulo_autor_repetidos",
+        { titulo: titulo, id_autor: id_autor },
+        function (res) {
+            res = JSON.parse(res);
+
+            if (res.repetidos > 0) {
+                // Título y autor repetidos, muestra el mensaje de error
+                $("#errorTitulo").html("El título ya existe para este autor");
+                $("#errorTitulo").removeClass("d-none");
+                $("#form_libros :submit").attr("disabled", true); // Deshabilita el botón de guardar
+            } else {
+                // Título y autor no repetidos, oculta el mensaje de error
+                $("#errorTitulo").addClass("d-none");
+                $("#form_libros :submit").attr("disabled", false); // Habilita el botón de guardar
+            }
+        }
+    );
+}
+
+  
   var eliminar = (id_libro) => {
     Swal.fire({
       title: "Paises",

@@ -47,6 +47,12 @@ switch ($_GET["op"]) {
         echo json_encode($datos); //devuelvo el arreglo en formato json
         break;
 
-        
+        case 'titulo_autor_repetidos':
+            $titulo = $_POST["titulo"];
+            $id_autor = $_POST["id_autor"];
+            $datos_titulo_autor = $libros->titulo_autor_repetidos($titulo, $id_autor);
+            $repetidos = mysqli_fetch_assoc($datos_titulo_autor);
+            echo json_encode($repetidos);
+            break;
     
 }

@@ -24,7 +24,7 @@
                                     <h6 class="fw-semibold mb-0">Titulo</h6>
                                 </th>
                                 <th class="border-bottom-0">
-                                    <h6 class="fw-semibold mb-0">Nombre del autor</h6>
+                                    <h6 class="fw-semibold mb-0">titulo del autor</h6>
                                 </th>
                                 <th class="border-bottom-0">
                                     <h6 class="fw-semibold mb-0">Genero</h6>
@@ -64,17 +64,33 @@
                 <div class="modal-body">
                 <input  type="hidden" name="id_libro" id="id_libro">
                 
-
-                    <div class="form-group">
+<!--  
+                   <div class="form-group">
                         <label for="titulo">titulo</label>
                         <input type="text" required class="form-control" id="titulo" name="titulo" placeholder="titulo">
                     </div>
+                    -->
+                    
+ 
+                    
+                    <div class="form-group">
+                        <label for="titulo">titulo</label>
+                        <input type="text" onfocusout="titulo_repetido();" required class="form-control" id="titulo" name="titulo" placeholder="titulo">
+                        <div class="alert alert-danger d-none" role="alert" id="errorTitulo">
+                        </div>
+                        
+                    </div>
+
                     <div class="form-group">
                         <label for="id_autor">Autor</label>
-                      <select name="id_autor" id="id_autor" class="form-control">
+                      <select name="id_autor"  onfocusout="titulo_repetido();" id="id_autor" class="form-control">
                         <option value="0">Seleccione un autor</option>
+
                       </select>
+                      <div class="alert alert-danger d-none" role="alert" id="errorAutor">
+                        </div>
                     </div>
+
                     <div class="form-group">
                         <label for="genero">genero</label>
                         <input type="text" required class="form-control" id="genero" name="genero" placeholder="genero">
