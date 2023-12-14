@@ -38,12 +38,21 @@ switch ($_GET["op"]) {
         echo json_encode($datos); //devuelvo el arreglo en formato json
         break;
 
-    case 'eliminar':
-        $id_autor = $_POST["id_autor"]; //defino una variable para almacenar el id del usuario, la variable se obtiene mediante POST
-        $datos = array(); //defino un arreglo
-        $datos = $autores->eliminar($id_autor); //llamo al modelo de usuarios e invoco al procedimiento eliminar
-        echo json_encode($datos); //devuelvo el arreglo en formato json
-        break;
+        case 'eliminar':
+            $id_autor = $_POST["id_autor"];
+            $datos = array();
+    
+            // Verifica si el autor tiene libros asociados
+            $tiene_libros = $autores->tieneLibrosAsociados($id_autor);
+    
+            if ($tiene_libros) {
+                $datos['error'] = "No se puede borrar porque el autor tiene un libro registrado";
+            } else {
+                $datos = $autores->eliminar($id_autor);
+            }
+    
+            echo json_encode($datos);
+            break;
 
         case 'nombre_repetido':
             $nombre = $_POST["nombre"];
@@ -52,5 +61,6 @@ switch ($_GET["op"]) {
             $uno = mysqli_fetch_assoc($datos); //recorro el arreglo de datos
             echo json_encode($uno); //devuelvo el arreglo en formato json
             break;
+
     
 }

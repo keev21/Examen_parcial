@@ -128,39 +128,42 @@ class autores_model{
         );
     }
 
-      eliminar() {
-        var id_autor = this.id_autor;
-    
-        Swal.fire({
+    eliminar() {
+      var id_autor = this.id_autor;
+  
+      Swal.fire({
           title: "autoress",
-          text: "Esta seguro de eliminar el autores",
+          text: "¿Está seguro de eliminar el autor?",
           icon: "warning",
           showCancelButton: true,
           confirmButtonColor: "#d33",
           cancelButtonColor: "#3085d6",
           confirmButtonText: "Eliminar",
-        }).then((result) => {
+      }).then((result) => {
           if (result.isConfirmed) {
-            $.post(
-              "../../Controllers/autores.controller.php?op=eliminar",
-              { id_autor: id_autor },
-              (res) => {
-                console.log(res);
-                
-                res = JSON.parse(res);
-                if (res === "ok") {
-                  Swal.fire("autoress", "autores Eliminado", "success");
-                  todos_controlador();
-                } else {
-                  Swal.fire("Error", res, "error");
-                }
-              }
-            );
+              $.post(
+                  "../../Controllers/autores.controller.php?op=eliminar",
+                  { id_autor: id_autor },
+                  (res) => {
+                      console.log(res);
+  
+                      res = JSON.parse(res);
+  
+                      if (res.error) {
+                          Swal.fire("Error", res.error, "error");
+                      } else if (res === "ok") {
+                          Swal.fire("autoress", "Autores Eliminado", "success");
+                          todos_controlador();
+                      } else {
+                          Swal.fire("Error", res, "error");
+                      }
+                  }
+              );
           }
-        });
-    
-        this.limpia_Cajas();
-      }
+      });
+  
+      this.limpia_Cajas();
+  }
 
       limpia_Cajas(){
         document.getElementById("nombre").value = "";

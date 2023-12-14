@@ -60,20 +60,40 @@ class Clase_autores
             $con->close();
         }
     }
-    public function eliminar($id_autor)
-    {
-        try {
-            $con = new Clase_Conectar_Base_Datos();
-            $con = $con->ProcedimientoConectar();
-            $cadena = "DELETE FROM `autores` WHERE id_autor=$id_autor";
-            $result = mysqli_query($con, $cadena);
-            return 'ok';
-        } catch (Throwable $th) {
-            return $th->getMessage();
-        } finally {
-            $con->close();
-        }
+    public function tieneLibrosAsociados($id_autor)
+{
+    try {
+        $con = new Clase_Conectar_Base_Datos();
+        $con = $con->ProcedimientoConectar();
+        
+        $sql = "SELECT COUNT(*) FROM `libros` WHERE id_autor = $id_autor";
+        $result = mysqli_query($con, $sql);
+        $num_libros = mysqli_fetch_array($result)[0];
+
+        return $num_libros > 0;
+    } catch (Throwable $th) {
+        return false; // Maneja el error según tus necesidades
+    } finally {
+        $con->close();
     }
+}
+
+public function eliminar($id_autor)
+{
+    try {
+        $con = new Clase_Conectar_Base_Datos();
+        $con = $con->ProcedimientoConectar();
+        
+        $sql = "DELETE FROM `autores` WHERE id_autor = $id_autor";
+        $result = mysqli_query($con, $sql);
+
+        return 'ok';
+    } catch (Throwable $th) {
+        return $th->getMessage();
+    } finally {
+        $con->close();
+    }
+}
     
     public function nombre_repetido($nombre)
     {
