@@ -36,14 +36,7 @@
                 <span class="hide-menu">Usuarios</span>
               </a>
             </li>
-            <li class="sidebar-item">
-              <a class="sidebar-link" href="telefonos/telefonos.php" target="base" aria-expanded="false">
-                <span>
-                  <i class="ti ti-alert-circle"></i>
-                </span>
-                <span class="hide-menu">Teléfonos</span>
-              </a>
-            </li>
+            
             <li class="sidebar-item">
               <a class="sidebar-link" target="base" href="autores/autores.php" aria-expanded="false">
                 <span>
