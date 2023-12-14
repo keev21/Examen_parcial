@@ -68,19 +68,21 @@ function init() {
   
   var cargaAutores = () => {
     return new Promise((resolve, reject) => {
-      $.post("../../Controllers/autores.controller.php?op=todos", (res) => {
-        res = JSON.parse(res);
-        var html = "";
-        $.each(res, (index, val) => {
-          html += `<option value="${val.id_autor}"> ${val.nombre}</option>`;
+        $.post("../../Controllers/autores.controller.php?op=todos", (res) => {
+            res = JSON.parse(res);
+            var html = "";
+            $.each(res, (index, val) => {
+                // Concatenar nombre y nacionalidad en el formato deseado
+                var nombreCompleto = val.nombre + ' - ' + val.nacionalidad;
+                html += `<option value="${val.id_autor}">${nombreCompleto}</option>`;
+            });
+            $("#id_autor").html(html);
+            resolve();
+        }).fail((error) => {
+            reject(error);
         });
-        $("#id_autor").html(html);
-        resolve();
-      }).fail((error) => {
-        reject(error);
-      });
     });
-  };
+};
   
   var editar = async (id_libro) => {
     await cargaAutores();

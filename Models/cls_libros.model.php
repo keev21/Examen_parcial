@@ -7,7 +7,7 @@ class Clase_libros
         try {
             $con = new Clase_Conectar_Base_Datos();
             $con = $con->ProcedimientoConectar();
-            $cadena = "SELECT libros.id_libro, libros.titulo, autores.nombre AS nombre_autor, libros.genero, libros.fecha_publicacion, libros.id_autor
+            $cadena = "SELECT libros.id_libro, libros.titulo, autores.nombre AS nombre_autor, autores.nacionalidad, libros.genero, libros.fecha_publicacion, libros.id_autor
             FROM libros
             INNER JOIN autores ON libros.id_autor = autores.id_autor;";
             $result = mysqli_query($con, $cadena);
