@@ -73,7 +73,8 @@
 
                     <div class="form-group">
                         <label for="nacionalidad">nacionalidad</label>
-                        <input type="text" required class="form-control" id="nacionalidad" name="nacionalidad" placeholder="nacionalidad">
+                        <input type="text" onfocusout="nombre_repetido();" required class="form-control" id="nacionalidad" name="nacionalidad" placeholder="nacionalidad">
+                        <div class="alert alert-danger d-none" role="alert" id="errornacionalidad">
                     </div>
                     
                     <div class="form-group">

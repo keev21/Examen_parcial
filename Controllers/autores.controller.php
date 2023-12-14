@@ -54,13 +54,13 @@ switch ($_GET["op"]) {
             echo json_encode($datos);
             break;
 
-        case 'nombre_repetido':
-            $nombre = $_POST["nombre"];
-            $datos = array(); //defino un arreglo
-            $datos = $autores->nombre_repetido($nombre); //llamo al modelo de usuarios e invoco al procedimiento uno y almaceno en una variable
-            $uno = mysqli_fetch_assoc($datos); //recorro el arreglo de datos
-            echo json_encode($uno); //devuelvo el arreglo en formato json
-            break;
+            case 'nombre_nacionalidad_repetidos':
+                $nombre = $_POST["nombre"];
+                $nacionalidad = $_POST["nacionalidad"];
+                $datos_repetidos = $autores->nombre_nacionalidad_repetidos($nombre, $nacionalidad);
+                $repetidos = mysqli_fetch_assoc($datos_repetidos);
+                echo json_encode($repetidos);
+                break;
 
     
 }

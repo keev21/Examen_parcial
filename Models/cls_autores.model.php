@@ -95,20 +95,22 @@ public function eliminar($id_autor)
     }
 }
     
-    public function nombre_repetido($nombre)
-    {
-        try {
-            $con = new Clase_Conectar_Base_Datos();
-            $con = $con->ProcedimientoConectar();
-            $cadena = "SELECT count(*) as nombre_repetido FROM `autores` WHERE `nombre`= '$nombre'";
-            $result = mysqli_query($con, $cadena);
-            return $result;
-        } catch (Throwable $th) {
-            return $th->getMessage();
-        } finally {
-            $con->close();
-        }
+public function nombre_nacionalidad_repetidos($nombre, $nacionalidad)
+{
+    try {
+        $con = new Clase_Conectar_Base_Datos();
+        $con = $con->ProcedimientoConectar();
+        $cadena = "SELECT count(*) as repetidos FROM `autores` WHERE nombre = '$nombre' AND nacionalidad = '$nacionalidad'";
+        $result = mysqli_query($con, $cadena);
+        return $result;
+    } catch (Throwable $th) {
+        return $th->getMessage();
+    } finally {
+        $con->close();
     }
+}
+
+    
     
    
    

@@ -109,14 +109,16 @@ class autores_model{
         this.limpia_Cajas();
       }
 
-      nombre_repetido() {
+      nombre_nacionalidad_repetidos() {
         var nombre = this.nombre;
+        var nacionalidad = this.nacionalidad;
+
         $.post(
-            "../../Controllers/autores.controller.php?op=nombre_repetido",
-            { nombre: nombre },
+            "../../Controllers/autores.controller.php?op=nombre_nacionalidad_repetidos",
+            { nombre: nombre, nacionalidad: nacionalidad },
             (res) => {
                 res = JSON.parse(res);
-                if (parseInt(res.nombre_repetido) > 0) {
+                if (parseInt(res.repetidos) > 0) {
                     $("#errornombre").removeClass("d-none");
                     $("#errornombre").html("El autor ya existe en la base de datos");
                     $("button").prop("disabled", true);

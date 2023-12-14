@@ -36,15 +36,12 @@ var editar = (id_autor) => {
 
 var nombre_repetido = () => {
   var nombre = $("#nombre").val();
-  var autores = new autores_model(
-    "",
-    nombre,
-    "",
-    "",
-    "nombre_repetido"
-  );
-  autores.nombre_repetido();
+  var nacionalidad = $("#nacionalidad").val();
+  
+  var autores = new autores_model("", nombre, nacionalidad, "", "nombre_nacionalidad_repetidos");
+  autores.nombre_nacionalidad_repetidos();
 };
+
 
 var eliminar=(id_autor)=>{
   var eliminar = new autores_model(id_autor, "", "","", "eliminar");

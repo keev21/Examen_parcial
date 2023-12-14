@@ -172,6 +172,7 @@ function init() {
     document.getElementById("titulo").value = "";
     document.getElementById("genero").value = "";
     document.getElementById("fecha_publicacion").value = "";
+    document.getElementById("errorTitulo").innerHTML = "";
     $("#Modal_libros").modal("hide");
   };
   init();
