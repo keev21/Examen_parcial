@@ -34,6 +34,18 @@ var editar = (id_autor) => {
   uno.uno();
 };
 
+var nombre_repetido = () => {
+  var nombre = $("#nombre").val();
+  var autores = new autores_model(
+    "",
+    nombre,
+    "",
+    "",
+    "nombre_repetido"
+  );
+  autores.nombre_repetido();
+};
+
 var eliminar=(id_autor)=>{
   var eliminar = new autores_model(id_autor, "", "","", "eliminar");
   eliminar.eliminar();

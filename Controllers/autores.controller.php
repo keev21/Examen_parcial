@@ -44,5 +44,13 @@ switch ($_GET["op"]) {
         $datos = $autores->eliminar($id_autor); //llamo al modelo de usuarios e invoco al procedimiento eliminar
         echo json_encode($datos); //devuelvo el arreglo en formato json
         break;
+
+        case 'nombre_repetido':
+            $nombre = $_POST["nombre"];
+            $datos = array(); //defino un arreglo
+            $datos = $autores->nombre_repetido($nombre); //llamo al modelo de usuarios e invoco al procedimiento uno y almaceno en una variable
+            $uno = mysqli_fetch_assoc($datos); //recorro el arreglo de datos
+            echo json_encode($uno); //devuelvo el arreglo en formato json
+            break;
     
 }

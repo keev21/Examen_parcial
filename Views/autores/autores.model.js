@@ -109,6 +109,25 @@ class autores_model{
         this.limpia_Cajas();
       }
 
+      nombre_repetido() {
+        var nombre = this.nombre;
+        $.post(
+            "../../Controllers/autores.controller.php?op=nombre_repetido",
+            { nombre: nombre },
+            (res) => {
+                res = JSON.parse(res);
+                if (parseInt(res.nombre_repetido) > 0) {
+                    $("#errornombre").removeClass("d-none");
+                    $("#errornombre").html("El autor ya existe en la base de datos");
+                    $("button").prop("disabled", true);
+                } else {
+                    $("#errornombre").addClass("d-none");
+                    $("button").prop("disabled", false);
+                }
+            }
+        );
+    }
+
       eliminar() {
         var id_autor = this.id_autor;
     

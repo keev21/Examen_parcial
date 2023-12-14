@@ -62,11 +62,15 @@
                 <div class="modal-body">
                 <input type="hidden" name="id_autor" id="id_autor">
                 
-
-                    <div class="form-group">
+                
+                <div class="form-group">
                         <label for="nombre">nombre</label>
-                        <input type="text" required class="form-control" id="nombre" name="nombre" placeholder="nombre">
+                        <input type="text" onfocusout="nombre_repetido();" required class="form-control" id="nombre" name="nombre" placeholder="nombre">
+                        <div class="alert alert-danger d-none" role="alert" id="errornombre">
+                        </div>
+                        
                     </div>
+
                     <div class="form-group">
                         <label for="nacionalidad">nacionalidad</label>
                         <input type="text" required class="form-control" id="nacionalidad" name="nacionalidad" placeholder="nacionalidad">

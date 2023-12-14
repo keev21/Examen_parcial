@@ -46,5 +46,7 @@ switch ($_GET["op"]) {
         $datos = $libros->eliminar($id_libro); //llamo al id_autor de usuarios e invoco al procedimiento eliminar
         echo json_encode($datos); //devuelvo el arreglo en formato json
         break;
+
+    
     
 }
